@@ -129,14 +129,6 @@ train_x, train_y = ChineseDailyNerCorpus.load_data()
 model.fit(train_x, train_y)
 ```
 
-## Contributing
+## 贡献
 
-Thanks for your interest in contributing! There are many ways to get involved; start with the [contributor guidelines](about/contributing.md) and then check these open issues for specific tasks.
-
-## Reference
-
-This library is inspired by and references following frameworks and papers.
-
-- [flair - A very simple framework for state-of-the-art Natural Language Processing (NLP)](https://github.com/zalandoresearch/flair)
-- [anago - Bidirectional LSTM-CRF and ELMo for Named-Entity Recognition, Part-of-Speech Tagging](https://github.com/Hironsan/anago)
-- [Chinese-Word-Vectors](https://github.com/Embedding/Chinese-Word-Vectors)
+如果对 Kashgari 感兴趣，可以通过多种方式加入到该项目。可以通过查阅 [贡献指南](about/contributing.md) 来了解更多。

@@ -8,7 +8,7 @@ theme:
     primary: red
     accent: red
   language: "zh"
-repo_url: https://github.com/BrikerMan/Kashgari
+repo_url: https://github.com/BrikerMan/Kashgari-doc-zh
 
 markdown_extensions:
   - markdown.extensions.admonition
@@ -81,3 +81,4 @@ nav:
   - About:
       - about/contributing.md
       - about/release-notes.md
+  - English Documents: https://kashgari.bmio.net
