@@ -1,0 +1,19 @@
+language: python
+dist: xenial
+
+python: "3.6"
+
+cache: pip
+
+before_install:
+  - export BOTO_CONFIG=/dev/null
+
+python: "3.6"
+install:
+  - echo -e "machine github.com\n  login ${GITHUB_TOKEN}" > ~/.netrc
+  - pip install mkdocs mkdocs-material pymdown-extensions
+script:
+  - mkdocs gh-deploy --force --clean
+branchs:
+  only:
+    - master
