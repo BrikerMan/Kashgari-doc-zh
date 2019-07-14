@@ -7,7 +7,7 @@ theme:
   palette:
     primary: red
     accent: red
-  language: "en"
+  language: "zh"
 repo_url: https://github.com/BrikerMan/Kashgari
 
 markdown_extensions:
