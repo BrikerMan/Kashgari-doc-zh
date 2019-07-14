@@ -8,7 +8,12 @@ theme:
     primary: red
     accent: red
   language: "zh"
-repo_url: https://github.com/BrikerMan/Kashgari
+# Repository
+repo_name: 'BrikerMan/Kashgari'
+repo_url: 'https://github.com/BrikerMan/Kashgari'
+
+# Copyright
+copyright: 'Copyright &copy; 2019 - 2022 BrikerMan'
 
 markdown_extensions:
   - markdown.extensions.admonition
@@ -56,6 +61,7 @@ extra:
   social:
     - type: github-alt
       link: https://github.com/BrikerMan
+  disqus: 'kashgari'
 
 nav:
   - 介绍: index.md
@@ -81,4 +87,5 @@ nav:
   - 关于:
       - about/contributing.md
       - about/release-notes.md
+  - 中文文档 Github: https://github.com/BrikerMan/Kashgari-doc-zh
   - English Documents: https://kashgari.bmio.net
