@@ -58,12 +58,12 @@ extra:
       link: https://github.com/BrikerMan
 
 nav:
-  - Introduction: index.md
-  - Tutorials:
+  - 介绍: index.md
+  - 教程:
       - tutorial/text-classification.md
       - tutorial/text-labeling.md
 
-  - Embeddings:
+  - 语言模型:
       - embeddings/index.md
       - embeddings/bare-embedding.md
       - embeddings/word-embedding.md
@@ -72,13 +72,13 @@ nav:
       - embeddings/numeric-features-embedding.md
       - embeddings/stacked-embedding.md
 
-  - Advanced:
+  - 进阶:
       - advance-use/multi-output-model.md
       - advance-use/handle-numeric-features.md
       - advance-use/tensorflow-serving.md
-  - API:
+  - API 文档:
       - api/corpus.md
-  - About:
+  - 关于:
       - about/contributing.md
       - about/release-notes.md
   - English Documents: https://kashgari.bmio.net
