@@ -6,20 +6,20 @@ Kashgari 提供了一系列的文本分类模型。所有的文本分类模型�
 
 ## 内置模型列表
 
-| 模型名称            | 模型描述 |
-| ------------------- | -------- |
-| BiLSTM_Model        |          |
-| BiGRU_Model         |          |
-| CNN_Model           |          |
-| CNN_LSTM_Model      |          |
-| CNN_GRU_Model       |          |
-| AVCNN_Model         |          |
-| KMax_CNN_Model      |          |
-| R_CNN_Model         |          |
-| AVRNN_Model         |          |
-| Dropout_BiGRU_Model |          |
-| Dropout_AVRNN_Model |          |
-| DPCNN_Model         |          |
+| 模型名称              | 模型描述 |
+| --------------------- | -------- |
+| BiLSTM\_Model         |          |
+| BiGRU\_Model          |          |
+| CNN\_Model            |          |
+| CNN\_LSTM\_Model      |          |
+| CNN\_GRU\_Model       |          |
+| AVCNN\_Model          |          |
+| KMax\_CNN\_Model      |          |
+| R\_CNN\_Model         |          |
+| AVRNN\_Model          |          |
+| Dropout\_BiGRU\_Model |          |
+| Dropout\_AVRNN\_Model |          |
+| DPCNN\_Model          |          |
 
 ## 训练分类模型
 

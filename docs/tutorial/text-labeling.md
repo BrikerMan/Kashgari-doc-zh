@@ -7,9 +7,9 @@ Kashgari 提供了一系列的文本分类模型。所有的文本标注模型�
 | Name               | Info |
 | ------------------ | ---- |
 | CNN\_LSTM\_Model   |      |
-| BiLSTM_Model       |      |
+| BiLSTM\_Model      |      |
 | BiLSTM\_CRF\_Model |      |
-| BiGRU_Model        |      |
+| BiGRU\_Model       |      |
 | BiGRU\_CRF\_Model  |      |
 
 ## 训练命名实体识别模型
