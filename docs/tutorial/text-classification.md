@@ -1,31 +1,31 @@
-# Text Classification Model
+# 文本分类
 
-Kashgari provides several models for text classification,
-All labeling models inherit from the `BaseClassificationModel`.
-You could easily switch from one model to another just by changing one line of code.
+Kashgari 提供了一系列的文本分类模型。所有的文本分类模型都继承自 `BaseClassificationModel` 类，提供了同样的 API。所以切换模型做实验非常的方便。
 
-## Available Models
+接口文档请看： [分类模型 API 文档](../api/tasks.classification.md)
 
-| Name                | info |
-| ------------------- | ---- |
-| BiLSTM_Model        |      |
-| BiGRU_Model         |      |
-| CNN_Model           |      |
-| CNN_LSTM_Model      |      |
-| CNN_GRU_Model       |      |
-| AVCNN_Model         |      |
-| KMax_CNN_Model      |      |
-| R_CNN_Model         |      |
-| AVRNN_Model         |      |
-| Dropout_BiGRU_Model |      |
-| Dropout_AVRNN_Model |      |
-| DPCNN_Model         |      |
+## 内置模型列表
 
-## Train basic classification model
+| 模型名称            | 模型描述 |
+| ------------------- | -------- |
+| BiLSTM_Model        |          |
+| BiGRU_Model         |          |
+| CNN_Model           |          |
+| CNN_LSTM_Model      |          |
+| CNN_GRU_Model       |          |
+| AVCNN_Model         |          |
+| KMax_CNN_Model      |          |
+| R_CNN_Model         |          |
+| AVRNN_Model         |          |
+| Dropout_BiGRU_Model |          |
+| Dropout_AVRNN_Model |          |
+| DPCNN_Model         |          |
 
-Kashgari provices basic intent-classification corpus for expirement. You could also use your corpus in any language for training.
+## 训练分类模型
 
-Load build-in corpus.
+Kashgari 内置了一个意图分类数据集用于测试。您也可以使用自己的数据，只需要把数据集格式化为同样的格式即可。
+
+首先加载内置数据集：
 
 ```python
 from kashgari.corpus import SMP2018ECDTCorpus
@@ -35,7 +35,7 @@ valid_x, valid_y = SMP2018ECDTCorpus.load_data('valid')
 test_x, test_y = SMP2018ECDTCorpus.load_data('test')
 ```
 
-Then train our first model. All models provided some APIs, so you could use any labeling model here.
+使用数据集训练模型。所有的模型都提供同样的接口，所以你可以 `BiLSTM_Model` 模型替换为任何一个内置的分类模型。
 
 ```python
 import kashgari
@@ -47,22 +47,20 @@ logging.basicConfig(level='DEBUG')
 model = BiLSTM_Model()
 model.fit(train_x, train_y, valid_x, valid_y)
 
-# Evaluate the model
+# 验证模型，此方法将打印出详细的验证报告
 model.evaluate(test_x, test_y)
 
-# Model data will save to `saved_ner_model` folder
+# 保存模型到 `saved_ner_model` 目录下
 model.save('saved_classification_model')
 
-# Load saved model
+# 加载保存模型
 loaded_model = kashgari.utils.load_model('saved_classification_model')
 loaded_model.predict(test_x[:10])
 ```
 
-That's all your need to do. Easy right.
+## 使用预训练语言模型进行迁移学习
 
-## Text classification with transfer learning
-
-Kashgari provides varies Language model Embeddings for transfer learning. Here is the example for BERT Embedding.
+Kashgari 内置了几种预训练语言模型处理模块，简化迁移学习流程。下面是一个使用 BERT 的例子。
 
 ```python
 import kashgari
@@ -79,11 +77,11 @@ model = BiGRU_Model(bert_embed)
 model.fit(train_x, train_y, valid_x, valid_y)
 ```
 
-You could replace bert_embedding with any Embedding class in `kashgari.embeddings`. More info about Embedding: LINK THIS.
+你还可以把 BERT 替换成 WordEmbedding 或者 GPT2Embedding 等，更多请查阅 [Embedding 文档](../embeddings/index.md)
 
-## Adjust model's hyper-parameters
+## 调整模型超参数
 
-You could easily change model's hyper-parameters. For example, we change the lstm unit in `BiLSTM_Model` from 128 to 32.
+通过模型的 `get_default_hyper_parameters()` 方法可以获取默认超参，将会返回一个字典。通过修改字典来修改超参列表。再使用新的超参字典初始化模型。
 
 ```python
 from kashgari.tasks.classification import BiLSTM_Model
@@ -97,10 +95,9 @@ hyper['layer_bi_lstm']['units'] = 32
 model = BiLSTM_Model(hyper_parameters=hyper)
 ```
 
-## Use callbacks
+## 使用训练回调
 
-Kashgari is based on keras so that you could use all of the [tf.keras callbacks](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks) directly with
-Kashgari model. For example, here is how to visualize training with tensorboard.
+Kashgari 是基于 tf.keras, 所以你可以直接使用全部的 [tf.keras 回调类](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks)，例如我们使用 TensorBoard 可视化训练过程。
 
 ```python
 from tensorflow.python import keras
@@ -114,7 +111,7 @@ model = BiGRU_Model()
 
 tf_board_callback = keras.callbacks.TensorBoard(log_dir='./logs', update_freq=1000)
 
-# Build-in callback for print precision, recall and f1 at every epoch step
+# 这是 Kashgari 内置回调函数，会在训练过程计算精确度，召回率和 F1
 eval_callback = EvalCallBack(kash_model=model,
                              valid_x=valid_x,
                              valid_y=valid_y,
@@ -128,11 +125,11 @@ model.fit(train_x,
           callbacks=[eval_callback, tf_board_callback])
 ```
 
-## Multi-Label Classification
+## 多标签分类
 
-Kashgari support multi-label classification, Here is how we build one.
+Kashgari 支持多分类多标签分类。
 
-Let's assume we have a dataset like this.
+假设我们的数据集是这样的：
 
 ```python
 x = [
@@ -150,7 +147,7 @@ y = [
 ]
 ```
 
-Now we need to init a `Processor` and `Embedding` for our model, then prepare model and fit.
+现在我们需要初始化一个 `Processor` 和 `Embedding` 对象，然后再初始化我们的模型。
 
 ```python
 from kashgari.tasks.classification import BiLSTM_Model
@@ -160,6 +157,7 @@ from kashgari.embeddings import BareEmbedding
 import logging
 logging.basicConfig(level='DEBUG')
 
+# 需要指定我们使用分类数据处理器，且支持多分类
 processor = ClassificationProcessor(multi_label=True)
 embed = BareEmbedding(processor=processor)
 
@@ -167,15 +165,13 @@ model = BiLSTM_Model(embed)
 model.fit(x, y)
 ```
 
-## Customize your own model
+## 自定义模型结构
 
-It is very easy and straightforward to build your own customized model,
-just inherit the `BaseClassificationModel` and implement the `get_default_hyper_parameters()` function
-and `build_model_arc()` function.
+除了内置模型以外，还可以很方便的自定义自己的模型结构。只需要继承 `BaseClassificationModel` 对象，然后实现`get_default_hyper_parameters()` 方法
+和 `build_model_arc()` 方法。
 
 ```python
 from typing import Dict, Any
-
 from tensorflow import keras
 
 from kashgari.tasks.classification.base_model import BaseClassificationModel
@@ -186,7 +182,6 @@ logging.basicConfig(level='DEBUG')
 
 
 class DoubleBLSTMModel(BaseClassificationModel):
-    """Bidirectional LSTM Sequence Labeling Model"""
 
     @classmethod
     def get_default_hyper_parameters(cls) -> Dict[str, Dict[str, Any]]:
@@ -217,11 +212,12 @@ class DoubleBLSTMModel(BaseClassificationModel):
         """
         build model architectural
         """
+        # 此处作用是从上层拿到输出张量形状和 Embedding 层的输出
         output_dim = len(self.pre_processor.label2idx)
         config = self.hyper_parameters
         embed_model = self.embedding.embed_model
 
-        # Define your layers
+        # 定义你自己的层
         layer_blstm1 = L.Bidirectional(L.LSTM(**config['layer_blstm1']),
                                        name='layer_blstm1')
         layer_blstm2 = L.Bidirectional(L.LSTM(**config['layer_blstm2']),
@@ -235,16 +231,17 @@ class DoubleBLSTMModel(BaseClassificationModel):
                                                    name='layer_time_distributed')
         layer_activation = L.Activation(**config['layer_activation'])
 
-        # Define tensor flow
+        # 定义数据流
         tensor = layer_blstm1(embed_model.output)
         tensor = layer_blstm2(tensor)
         tensor = layer_dropout(tensor)
         tensor = layer_time_distributed(tensor)
         output_tensor = layer_activation(tensor)
 
-        # Init model
+        # 初始化模型
         self.tf_model = keras.Model(embed_model.inputs, output_tensor)
 
+# 此模型可以和任何一个 Embedding 组合使用
 model = DoubleBLSTMModel()
 model.fit(train_x, train_y, valid_x, valid_y)
 ```
