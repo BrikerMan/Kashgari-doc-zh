@@ -1,35 +1,32 @@
-# Text Labeling Model
+# 文本标注
 
-Kashgari provides several models for text labeling,
-All labeling models inherit from the `BaseLabelingModel`.
-You could easily switch from one model to another just by changing one line of code.
+Kashgari 提供了一系列的文本分类模型。所有的文本标注模型都继承自 `BaseLabelingModel` 类，提供了同样的 API。所以切换模型做实验非常的方便。
 
 ## Available Models
 
-| Name             | Info |
-| ---------------- | ---- |
-| CNN_LSTM_Model   |      |
-| BiLSTM_Model     |      |
-| BiLSTM_CRF_Model |      |
-| BiGRU_Model      |      |
-| BiGRU_CRF_Model  |      |
+| Name               | Info |
+| ------------------ | ---- |
+| CNN\_LSTM\_Model   |      |
+| BiLSTM_Model       |      |
+| BiLSTM\_CRF\_Model |      |
+| BiGRU_Model        |      |
+| BiGRU\_CRF\_Model  |      |
 
-## Train basic NER model
+## 训练命名实体识别模型
 
-Kashgari provices basic NER corpus for expirement. You could also use your corpus in any language for training.
+Kashgari 内置了人民日报命名实体识别和 CONLL 2003 实体识别数据集，方便快速实验。
 
-Load build-in corpus.
+加载内置数据集
 
 ```python
-# For Chinese
+# 中文数据集
 from kashgari.corpus import ChineseDailyNerCorpus
 
 train_x, train_y = ChineseDailyNerCorpus.load_data('train')
 valid_x, valid_y = ChineseDailyNerCorpus.load_data('valid')
 test_x, test_y = ChineseDailyNerCorpus.load_data('test')
 
-
-# For English
+# 英文数据集
 from kashgari.corpus import CONLL2003ENCorpus
 
 train_x, train_y = CONLL2003ENCorpus.load_data('train')
@@ -37,7 +34,7 @@ valid_x, valid_y = CONLL2003ENCorpus.load_data('valid')
 test_x, test_y = CONLL2003ENCorpus.load_data('test')
 ```
 
-Or use your own corpus, it needs to be tokenized like this.
+除了使用内置数据集，你也可以加载自己的数据集，数据格式和内置数据集一样即可，建议按照 BIO 规范进行标注。内置数据集格式如下：
 
 ```python
 >>> print(train_x[0])
@@ -47,7 +44,7 @@ Or use your own corpus, it needs to be tokenized like this.
 ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'B-LOC', 'I-LOC', 'O', 'B-LOC', 'I-LOC', 'O', 'O', 'O', 'O', 'O', 'O']
 ```
 
-Then train our first model. All models provided some APIs, so you could use any labeling model here.
+数据准备好了，就可以开始训练模型了。所有的标注模型提供相同的 API，所以替换模型架构非常方便。
 
 ```python
 import kashgari
@@ -56,23 +53,22 @@ from kashgari.tasks.labeling import BLSTMModel
 model = BLSTMModel()
 model.fit(train_x, train_y, valid_x, valid_y)
 
-# Evaluate the model
-
+# 验证模型，此方法将打印出详细的验证报告
 model.evaluate(test_x, test_y)
 
-# Model data will save to `saved_ner_model` folder
+# 保存模型到 `saved_ner_model` 目录下
 model.save('saved_ner_model')
 
-# Load saved model
+# 加载保存模型
 loaded_model = kashgari.utils.load_model('saved_ner_model')
+
+# 使用模型进行预测
 loaded_model.predict(test_x[:10])
 ```
 
-That's all your need to do. Easy right.
+## 使用预训练语言模型进行迁移学习
 
-## Sequence labeling with transfer learning
-
-Kashgari provides varies Language model Embeddings for transfer learning. Here is the example for BERT Embedding.
+Kashgari 内置了几种预训练语言模型处理模块，简化迁移学习流程。下面是一个使用 BERT 的例子。
 
 ```python
 import kashgari
@@ -86,11 +82,13 @@ model = BLSTMModel(bert_embed)
 model.fit(train_x, train_y, valid_x, valid_y)
 ```
 
-You could replace bert_embedding with any Embedding class in `kashgari.embeddings`. More info about Embedding: LINK THIS.
+你还可以把 BERT 替换成 WordEmbedding 或者 GPT2Embedding 等，更多请查阅 [Embedding 文档](../embeddings/index.md)
 
-## Adjust model's hyper-parameters
+## 调整模型超参数
 
-You could easily change model's hyper-parameters. For example, we change the lstm unit in `BLSTMModel` from 128 to 32.
+通过模型的 `get_default_hyper_parameters()` 方法可以获取默认超参，将会返回一个字典。通过修改字典来修改超参列表。再使用新的超参字典初始化模型。
+
+假设我们想把 `layer_blstm` 层的神经元数量调整为 32：
 
 ```python
 from kashgari.tasks.labeling import BLSTMModel
@@ -104,10 +102,9 @@ hyper['layer_blstm']['units'] = 32
 model = BLSTMModel(hyper_parameters=hyper)
 ```
 
-## Use callbacks
+## 使用训练回调
 
-Kashgari is based on keras so that you could use all of the [tf.keras callbacks](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks) directly with
-Kashgari model. For example, here is how to visualize training with tensorboard.
+Kashgari 是基于 tf.keras, 所以你可以直接使用全部的 [tf.keras 回调类](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks)，例如我们使用 TensorBoard 可视化训练过程。
 
 ```python
 from tensorflow.python import keras
@@ -119,7 +116,7 @@ model = BLSTMModel()
 
 tf_board_callback = keras.callbacks.TensorBoard(log_dir='./logs', update_freq=1000)
 
-# Build-in callback for print precision, recall and f1 at every epoch step
+# 这是 Kashgari 内置回调函数，会在训练过程计算精确度，召回率和 F1
 eval_callback = EvalCallBack(kash_model=model,
                              valid_x=valid_x,
                              valid_y=valid_y,
@@ -133,11 +130,10 @@ model.fit(train_x,
           callbacks=[eval_callback, tf_board_callback])
 ```
 
-## Customize your own model
+## 自定义模型结构
 
-It is very easy and straightforward to build your own customized model,
-just inherit the `BaseLabelingModel` and implement the `get_default_hyper_parameters()` function
-and `build_model_arc()` function.
+除了内置模型以外，还可以很方便的自定义自己的模型结构。只需要继承 `BaseLabelingModel` 对象，然后实现`get_default_hyper_parameters()` 方法
+和 `build_model_arc()` 方法。
 
 ```python
 from typing import Dict, Any
@@ -182,11 +178,12 @@ class DoubleBLSTMModel(BaseLabelingModel):
         """
         build model architectural
         """
+        # 此处作用是从上层拿到输出张量形状和 Embedding 层的输出
         output_dim = len(self.pre_processor.label2idx)
         config = self.hyper_parameters
         embed_model = self.embedding.embed_model
 
-        # Define your layers
+        # 定义你自己的层
         layer_blstm1 = L.Bidirectional(L.LSTM(**config['layer_blstm1']),
                                        name='layer_blstm1')
         layer_blstm2 = L.Bidirectional(L.LSTM(**config['layer_blstm2']),
@@ -200,16 +197,17 @@ class DoubleBLSTMModel(BaseLabelingModel):
                                                    name='layer_time_distributed')
         layer_activation = L.Activation(**config['layer_activation'])
 
-        # Define tensor flow
+        # 定义数据流
         tensor = layer_blstm1(embed_model.output)
         tensor = layer_blstm2(tensor)
         tensor = layer_dropout(tensor)
         tensor = layer_time_distributed(tensor)
         output_tensor = layer_activation(tensor)
 
-        # Init model
+        # 初始化模型
         self.tf_model = keras.Model(embed_model.inputs, output_tensor)
 
+# 此模型可以和任何一个 Embedding 组合使用
 model = DoubleBLSTMModel()
 model.fit(train_x, train_y, valid_x, valid_y)
 ```

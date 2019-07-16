@@ -55,6 +55,8 @@ model.save('saved_classification_model')
 
 # 加载保存模型
 loaded_model = kashgari.utils.load_model('saved_classification_model')
+
+# 使用模型进行预测
 loaded_model.predict(test_x[:10])
 ```
 
@@ -82,6 +84,8 @@ model.fit(train_x, train_y, valid_x, valid_y)
 ## 调整模型超参数
 
 通过模型的 `get_default_hyper_parameters()` 方法可以获取默认超参，将会返回一个字典。通过修改字典来修改超参列表。再使用新的超参字典初始化模型。
+
+假设我们想把 `layer_bi_lstm` 层的神经元数量调整为 32：
 
 ```python
 from kashgari.tasks.classification import BiLSTM_Model
