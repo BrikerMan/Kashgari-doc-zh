@@ -9,11 +9,11 @@ theme:
     accent: red
   language: "zh"
 # Repository
-repo_name: 'BrikerMan/Kashgari'
-repo_url: 'https://github.com/BrikerMan/Kashgari'
+repo_name: "BrikerMan/Kashgari"
+repo_url: "https://github.com/BrikerMan/Kashgari"
 
 # Copyright
-copyright: 'Copyright &copy; 2019 - 2022 BrikerMan'
+copyright: "Copyright &copy; 2019 - 2022 BrikerMan"
 
 markdown_extensions:
   - markdown.extensions.admonition
@@ -61,7 +61,7 @@ extra:
   social:
     - type: github-alt
       link: https://github.com/BrikerMan
-  disqus: 'kashgari'
+  disqus: "kashgari"
 
 nav:
   - 介绍: index.md
@@ -84,6 +84,13 @@ nav:
       - advance-use/tensorflow-serving.md
   - API 文档:
       - api/corpus.md
+      - api/tasks.classification.md
+      - api/tasks.labeling.md
+      - api/utils.md
+      - api/callbacks.md
+
+  - FAQ:
+      - FAQ.md
   - 关于:
       - about/contributing.md
       - about/release-notes.md

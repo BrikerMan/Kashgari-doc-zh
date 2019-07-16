@@ -16,6 +16,16 @@ pip show kashgari-tf
 
 ## Current Release
 
+### [0.5.1] - 2019.07.15
+
+- 📝 Rewrite documents with mkdocs
+- 📝 Add Chinese documents
+- ✨ Add `predict_top_k_class` for classification model to get predict probabilities ([#146](https://github.com/BrikerMan/Kashgari/issues/146))
+- 🚸 Add `label2idx`, `token2idx` properties to Embeddings and Models
+- 🚸 Add `tokenizer` property for BERT Embedding. ([#136](https://github.com/BrikerMan/Kashgari/issues/136))
+- 🚸 Add `predict_kwargs` for models `predict()` function
+- ⚡️ Change multi-label classification's default loss function to binary_crossentropy ([#151](https://github.com/BrikerMan/Kashgari/issues/151))
+
 ### [0.5.0] - 2019.07.11
 
 🎉🎉 tf.keras version 🎉🎉
@@ -82,6 +92,7 @@ pip show kashgari-tf
 - fix classification model evaluate result output
 - change test settings
 
+[0.5.1]: https://github.com/BrikerMan/Kashgari/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/BrikerMan/Kashgari/compare/milestone/tf.keras...v0.5.0
 [0.2.6]: https://github.com/BrikerMan/Kashgari/compare/v0.2.4...v0.2.6
 [0.2.4]: https://github.com/BrikerMan/Kashgari/compare/v0.2.1...v0.2.4

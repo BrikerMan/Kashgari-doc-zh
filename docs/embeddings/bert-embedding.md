@@ -8,7 +8,6 @@ BERTEmbedding support BERT variants like **ERNIE**, but need to load the **tenso
     When using pre-trained embedding, remember to use same tokenize tool with the embedding model, this will allow to access the full power of the embedding
 
 ```python
-
 kashgari.embeddings.BERTEmbedding(model_folder: str,
                                   layer_nums: int = 4,
                                   trainable: bool = False,
@@ -40,43 +39,37 @@ labels = [
     "class2",
     "class1"
 ]
-########## pre-process input sentences first ##########
-import os
-import codecs
-from keras_bert import Tokenizer
-bert_model_path = "wwm_uncased_L-24_H-1024_A-16/"
-vocab_path = os.path.join(bert_model_path, 'vocab.txt')
-token_dict = {}
-with codecs.open(vocab_path, 'r', 'utf8') as reader:
-    for line in reader:
-        token = line.strip()
-        token_dict[token] = len(token_dict)
-"""
-token_dict should contain something like the following:
-{{'[PAD]': 0, ..., 'stratford': 17723, '##rted': 17724, 'noticeable': 17725, '##evic': 17726, 'imp': 17727, '##rita': 17728, ...}
-"""
-tokenizer = Tokenizer(token_dict)
+########## Load Bert Embedding ##########
+import kashgari
+from kashgari.embeddings import BERTEmbedding
+
+bert_embedding = BERTEmbedding(bert_model_path,
+                               task=kashgari.CLASSIFICATION,
+                               sequence_length=128)
+
+tokenizer = bert_embedding.tokenizer
 sentences_tokenized = []
 for sentence in sentences:
-  sentence_tokenized = tokenizer.tokenize(sentence)
-  sentences_tokenized.append(sentence_tokenized)
+    sentence_tokenized = tokenizer.tokenize(sentence)
+    sentences_tokenized.append(sentence_tokenized)
 """
 The sentences will become tokenized into:
 [
-    ['[CLS]', 'jim', 'henson', 'was', 'a', 'puppet', '##eer', '.', '[SEP]'], 
-    ['[CLS]', 'this', 'here', "'", 's', 'an', 'example', 'of', 'using', 'the', 'bert', 'token', '##izer', '.', '[SEP]'], 
+    ['[CLS]', 'jim', 'henson', 'was', 'a', 'puppet', '##eer', '.', '[SEP]'],
+    ['[CLS]', 'this', 'here', "'", 's', 'an', 'example', 'of', 'using', 'the', 'bert', 'token', '##izer', '.', '[SEP]'],
     ['[CLS]', 'why', 'did', 'the', 'chicken', 'cross', 'the', 'road', '?', '[SEP]']
 ]
 """
-train_x, train_y = sentences[:2], labels[:2]
-validate_x, validate_y = sentences[2:], labels[2:]
-########## /pre-process input sentences first ##########
+
+# Our tokenizer already added the BOS([CLS]) and EOS([SEP]) token
+# so we need to disable the default add_bos_eos setting.
+bert_embedding.processor.add_bos_eos = False
+
+train_x, train_y = sentences_tokenized[:2], labels[:2]
+validate_x, validate_y = sentences_tokenized[2:], labels[2:]
 
 ########## build model ##########
-from kashgari.embeddings import BERTEmbedding
 from kashgari.tasks.classification import CNNLSTMModel
-import kashgari
-bert_embedding = BERTEmbedding(bert_model_path, task=kashgari.CLASSIFICATION, sequence_length=128)
 model = CNNLSTMModel(bert_embedding)
 
 ########## /build model ##########
@@ -89,3 +82,31 @@ model.fit(
 # save model
 model.save('path/to/save/model/to')
 ```
+
+## Use sentence pairs for input
+
+let's assume input pair sample is `"First do it" "then do it right"`, Then first tokenize the sentences using bert tokenizer. Then
+
+```python
+sentence1 = ['First', 'do', 'it']
+sentence2 = ['then', 'do', 'it', 'right']
+
+sample = sentence1 + ["[SEP]"] + sentence2
+# Add a special separation token `[SEP]` between two sentences tokens
+# Generate a new token list
+# ['First', 'do', 'it', '[SEP]', 'then', 'do', 'it', 'right']
+
+train_x = [sample]
+```
+
+## Pre-trained models
+
+| model            | provider             | Language       | Link             | info                          |
+| ---------------- | -------------------- | -------------- | ---------------- | ----------------------------- |
+| BERT official    | Google               | Multi Language | [link][bert]     |                               |
+| ERNIE            | Baidu                | Chinese        | [link][ernie]    | Unofficial Tensorflow Version |
+| Chinese BERT WWM | 哈工大讯飞联合实验室 | Chinese        | [link][bert-wwm] | Use Tensorflow Version        |
+
+[bert]: https://github.com/google-research/bert
+[ernie]: https://github.com/ArthurRizar/tensorflow_ernie
+[bert-wwm]: https://github.com/ymcui/Chinese-BERT-wwm#%E4%B8%AD%E6%96%87%E6%A8%A1%E5%9E%8B%E4%B8%8B%E8%BD%BD
