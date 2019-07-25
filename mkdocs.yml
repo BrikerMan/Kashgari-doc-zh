@@ -57,6 +57,10 @@ extra_javascript:
 plugins:
   - search
 
+google_analytics:
+  - "UA-78705624-3"
+  - "auto"
+
 extra:
   social:
     - type: github-alt
