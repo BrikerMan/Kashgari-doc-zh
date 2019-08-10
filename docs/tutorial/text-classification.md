@@ -25,14 +25,20 @@ Kashgari 提供了一系列的文本分类模型。所有的文本分类模型�
 
 Kashgari 内置了一个意图分类数据集用于测试。您也可以使用自己的数据，只需要把数据集格式化为同样的格式即可。
 
-首先加载内置数据集：
-
 ```python
 from kashgari.corpus import SMP2018ECDTCorpus
 
+# 加载内置数据集
 train_x, train_y = SMP2018ECDTCorpus.load_data('train')
 valid_x, valid_y = SMP2018ECDTCorpus.load_data('valid')
 test_x, test_y = SMP2018ECDTCorpus.load_data('test')
+
+# 也可以使用自己的数据集
+train_x = [['Hello', 'world'], ['Hello', 'Kashgari']]
+train_y = ['a', 'b']
+
+valid_x, valid_y = train_x, train_y
+test_x, test_x = train_x, train_y
 ```
 
 使用数据集训练模型。所有的模型都提供同样的接口，所以你可以 `BiLSTM_Model` 模型替换为任何一个内置的分类模型。
@@ -248,4 +254,12 @@ class DoubleBLSTMModel(BaseClassificationModel):
 # 此模型可以和任何一个 Embedding 组合使用
 model = DoubleBLSTMModel()
 model.fit(train_x, train_y, valid_x, valid_y)
+```
+
+## 使用 CuDNN 加速 GPU 训练
+
+Kashgari 可以使用 [CuDNN 层](https://stackoverflow.com/questions/46767001/what-is-cudnn-implementation-of-rnn-cells-in-tensorflow)来加速训练。CuDNNLSTM 和 CuDNNGRU 训练速度比 LSTM 和 GRU 快很多，但是只能在 GPU 上使用。如果需要 GPU 训练，CPU 推断，那么不能使用 CuDNN 来加速训练。设置 CuDNN 方法如下：
+
+```python
+kashgari.config.use_cudnn_cell = True
 ```

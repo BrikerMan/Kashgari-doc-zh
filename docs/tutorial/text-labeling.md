@@ -19,19 +19,27 @@ Kashgari 内置了人民日报命名实体识别和 CONLL 2003 实体识别数�
 加载内置数据集
 
 ```python
-# 中文数据集
+# 加载内置数据集
+## 中文数据集
 from kashgari.corpus import ChineseDailyNerCorpus
 
 train_x, train_y = ChineseDailyNerCorpus.load_data('train')
 valid_x, valid_y = ChineseDailyNerCorpus.load_data('valid')
 test_x, test_y = ChineseDailyNerCorpus.load_data('test')
 
-# 英文数据集
+## 英文数据集
 from kashgari.corpus import CONLL2003ENCorpus
 
 train_x, train_y = CONLL2003ENCorpus.load_data('train')
 valid_x, valid_y = CONLL2003ENCorpus.load_data('valid')
 test_x, test_y = CONLL2003ENCorpus.load_data('test')
+
+# 也可以使用自己的数据集
+train_x = [['Hello', 'world'], ['Hello', 'Kashgari'], ['I', 'love', 'Beijing']]
+train_y = [['O', 'O'], ['O', 'B-PER'], ['O', 'B-LOC']]
+
+valid_x, valid_y = train_x, train_y
+test_x, test_x = train_x, train_y
 ```
 
 除了使用内置数据集，你也可以加载自己的数据集，数据格式和内置数据集一样即可，建议按照 BIO 规范进行标注。内置数据集格式如下：
@@ -210,6 +218,14 @@ class DoubleBLSTMModel(BaseLabelingModel):
 # 此模型可以和任何一个 Embedding 组合使用
 model = DoubleBLSTMModel()
 model.fit(train_x, train_y, valid_x, valid_y)
+```
+
+## 使用 CuDNN 加速 GPU 训练
+
+Kashgari 可以使用 [CuDNN 层](https://stackoverflow.com/questions/46767001/what-is-cudnn-implementation-of-rnn-cells-in-tensorflow)来加速训练。CuDNNLSTM 和 CuDNNGRU 训练速度比 LSTM 和 GRU 快很多，但是只能在 GPU 上使用。如果需要 GPU 训练，CPU 推断，那么不能使用 CuDNN 来加速训练。设置 CuDNN 方法如下：
+
+```python
+kashgari.config.use_cudnn_cell = True
 ```
 
 ## Performance report
