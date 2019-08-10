@@ -1,0 +1,1186 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+    
+    
+      
+        <title>Kashgari</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/application.0284f74d.css">
+      
+        <link rel="stylesheet" href="assets/stylesheets/application-palette.01803549.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#ef5350">
+      
+    
+    
+      <script src="assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="static/css/extra.css">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-78705624-3", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="red" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="." title="Kashgari" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Kashgari
+            </span>
+            <span class="md-header-nav__topic">
+              
+                介绍
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/BrikerMan/Kashgari/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    BrikerMan/Kashgari
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="." title="介绍" class="md-tabs__link md-tabs__link--active">
+        介绍
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="tutorial/text-classification/" title="教程" class="md-tabs__link">
+          教程
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="embeddings/" title="语言模型" class="md-tabs__link">
+          语言模型
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="advance-use/multi-output-model/" title="进阶" class="md-tabs__link">
+          进阶
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="api/corpus/" title="API 文档" class="md-tabs__link">
+          API 文档
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="FAQ/" title="FAQ" class="md-tabs__link">
+          FAQ
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="about/contributing/" title="关于" class="md-tabs__link">
+          关于
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="." title="Kashgari" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Kashgari
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/BrikerMan/Kashgari/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    BrikerMan/Kashgari
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        介绍
+      </label>
+    
+    <a href="." title="介绍" class="md-nav__link md-nav__link--active">
+      介绍
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="我们的使命" class="md-nav__link">
+    我们的使命
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="教程" class="md-nav__link">
+    教程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="快速开始" class="md-nav__link">
+    快速开始
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="安装" class="md-nav__link">
+    安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="基础用法" class="md-nav__link">
+    基础用法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bert" title="使用 Bert 语言模型" class="md-nav__link">
+    使用 Bert 语言模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" title="性能指标" class="md-nav__link">
+    性能指标
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" title="贡献" class="md-nav__link">
+    贡献
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      教程
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        教程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="tutorial/text-classification/" title="文本分类" class="md-nav__link">
+      文本分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="tutorial/text-labeling/" title="文本标注" class="md-nav__link">
+      文本标注
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      语言模型
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        语言模型
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="embeddings/" title="Language Embeddings" class="md-nav__link">
+      Language Embeddings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="embeddings/bare-embedding/" title="Bare Embedding" class="md-nav__link">
+      Bare Embedding
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="embeddings/word-embedding/" title="Word Embedding" class="md-nav__link">
+      Word Embedding
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="embeddings/bert-embedding/" title="BERT Embedding" class="md-nav__link">
+      BERT Embedding
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="embeddings/gpt2-embedding/" title="GPT2 Embedding" class="md-nav__link">
+      GPT2 Embedding
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="embeddings/numeric-features-embedding/" title="Numeric Features Embedding" class="md-nav__link">
+      Numeric Features Embedding
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="embeddings/stacked-embedding/" title="Stacked Embedding" class="md-nav__link">
+      Stacked Embedding
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      进阶
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        进阶
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="advance-use/multi-output-model/" title="Customize Multi Output Model" class="md-nav__link">
+      Customize Multi Output Model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="advance-use/handle-numeric-features/" title="Handle Numeric features" class="md-nav__link">
+      Handle Numeric features
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="advance-use/tensorflow-serving/" title="Tensorflow Serving" class="md-nav__link">
+      Tensorflow Serving
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      API 文档
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        API 文档
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="api/corpus/" title="corpus" class="md-nav__link">
+      corpus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="api/tasks.classification/" title="tasks.classification" class="md-nav__link">
+      tasks.classification
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="api/tasks.labeling/" title="tasks.labeling" class="md-nav__link">
+      tasks.labeling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="api/utils/" title="utils" class="md-nav__link">
+      utils
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="api/callbacks/" title="callbacks" class="md-nav__link">
+      callbacks
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      FAQ
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        FAQ
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="FAQ/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      关于
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        关于
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="about/contributing/" title="Contributing & Support" class="md-nav__link">
+      Contributing &amp; Support
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="about/release-notes/" title="Release notes" class="md-nav__link">
+      Release notes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/BrikerMan/Kashgari-doc-zh" title="中文文档 Github" class="md-nav__link">
+      中文文档 Github
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="https://kashgari.bmio.net" title="English Documents" class="md-nav__link">
+      English Documents
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="我们的使命" class="md-nav__link">
+    我们的使命
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="教程" class="md-nav__link">
+    教程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="快速开始" class="md-nav__link">
+    快速开始
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="安装" class="md-nav__link">
+    安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="基础用法" class="md-nav__link">
+    基础用法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bert" title="使用 Bert 语言模型" class="md-nav__link">
+    使用 Bert 语言模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" title="性能指标" class="md-nav__link">
+    性能指标
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" title="贡献" class="md-nav__link">
+    贡献
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/BrikerMan/Kashgari/edit/master/docs/index.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 align="center" >
+    <strong style="color: rgba(0,0,0,.87);">Kashgari</strong>
+</h1>
+
+<p align="center">
+    <a href="https://github.com/BrikerMan/kashgari/blob/master/LICENSE">
+        <img alt="GitHub" src="https://img.shields.io/github/license/BrikerMan/kashgari.svg?color=blue&style=popout">
+    </a>
+    <a href="https://travis-ci.com/BrikerMan/Kashgari">
+        <img src="https://travis-ci.com/BrikerMan/Kashgari.svg?branch=master"/>
+    </a>
+    <a href='https://coveralls.io/github/BrikerMan/Kashgari?branch=master'>
+        <img src='https://coveralls.io/repos/github/BrikerMan/Kashgari/badge.svg?branch=master' alt='Coverage Status'/>
+    </a>
+     <a href="https://pepy.tech/project/kashgari-tf">
+        <img src="https://pepy.tech/badge/kashgari-tf"/>
+    </a>
+    <a href="https://pypi.org/project/kashgari-tf/">
+        <img alt="PyPI" src="https://img.shields.io/pypi/v/kashgari-tf.svg">
+    </a>
+</p>
+
+<p>Kashgari 是一个极简且强大的 NLP 框架，可用于文本分类和标注的学习，研究及部署上线。</p>
+<ul>
+<li><strong>方便易用</strong> Kashgari 提供了简洁统一的 API 和完善的文档，使其非常方便易用。</li>
+<li><strong>内置迁移学习模块</strong> Kashgari 通过提供 <code>BertEmbedding</code>, <code>GPT2Embedding</code>，<code>WordEmbedding</code> 等特征提取类，方便利用预训练语言模型实现迁移学习。</li>
+<li><strong>易扩展</strong> Kashgari 提供简便的接口和继承关系，自行扩展新的模型结构非常方便。</li>
+<li><strong>可用于生产</strong> 通过把 Kashgari 模型导出为 <code>SavedModel</code> 格式，可以使用 TensorFlow Serving 模块提供服务，直接在线上环境使用。</li>
+</ul>
+<h2 id="_1">我们的使命<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<ul>
+<li>为 <strong>学术研究者</strong> 提供易于实验的环境，可快速验证理论。</li>
+<li>为 <strong>NLP初学者</strong> 提供易于学习模仿的生产级别工程。</li>
+<li>为 <strong>NLP工作者</strong> 提供快速搭建文本分类、文本标注的框架，简化日常工作流程。</li>
+</ul>
+<h2 id="_2">教程<a class="headerlink" href="#_2" title="Permanent link">#</a></h2>
+<p>这是一些详细的教程:</p>
+<ul>
+<li><a href="tutorial/text-classification/">教程 1: 文本分类</a></li>
+<li><a href="tutorial/text-labeling/">教程 2: 文本标注</a></li>
+</ul>
+<p>还有一些博客文章介绍如何使用 Kashgari:</p>
+<ul>
+<li><a href="https://eliyar.biz/nlp_chinese_text_classification_in_15mins/">15 分钟搭建中文文本分类模型</a></li>
+<li><a href="https://eliyar.biz/nlp_chinese_bert_ner/">基于 BERT 的中文命名实体识别（NER)</a></li>
+<li><a href="https://eliyar.biz/nlp_train_and_deploy_bert_text_classification/">BERT/ERNIE 文本分类和部署</a></li>
+<li><a href="https://www.jianshu.com/p/1d6689851622">五分钟搭建一个基于BERT的NER模型</a></li>
+<li><a href="https://medium.com/@BrikerMan/multi-class-text-classification-with-kashgari-in-15mins-c3e744ce971d">Multi-Class Text Classification with Kashgari in 15 minutes</a></li>
+</ul>
+<h2 id="_3">快速开始<a class="headerlink" href="#_3" title="Permanent link">#</a></h2>
+<h3 id="_4">安装<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>tf.keras 版本 pypi 包重命名为 <code>kashgari-tf</code></p>
+</div>
+<p>该项目基于 Tensorflow 1.14.0 和 Python 3.6+.</p>
+<div class="highlight"><pre><span></span>pip install kashgari-tf
+<span class="c1"># CPU</span>
+pip install <span class="nv">tensorflow</span><span class="o">==</span><span class="m">1</span>.14.0
+<span class="c1"># GPU</span>
+pip install tensorflow-gpu<span class="o">==</span><span class="m">1</span>.14.0
+</pre></div>
+
+<h3 id="_5">基础用法<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<p>下面我们用 Bi_LSTM 模型实现一个命名实体识别任务：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kashgari.corpus</span> <span class="kn">import</span> <span class="n">ChineseDailyNerCorpus</span>
+<span class="kn">from</span> <span class="nn">kashgari.tasks.labeling</span> <span class="kn">import</span> <span class="n">BiLSTM_Model</span>
+
+<span class="c1"># 加载内置数据集，此处可以替换成自己的数据集，保证格式一致即可</span>
+<span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span> <span class="o">=</span> <span class="n">ChineseDailyNerCorpus</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="s1">&#39;train&#39;</span><span class="p">)</span>
+<span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">ChineseDailyNerCorpus</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="n">valid_x</span><span class="p">,</span> <span class="n">valid_y</span> <span class="o">=</span> <span class="n">ChineseDailyNerCorpus</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="s1">&#39;valid&#39;</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">BiLSTM_Model</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">valid_x</span><span class="p">,</span> <span class="n">valid_y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">_________________________________________________________________</span>
+<span class="sd">Layer (type)                 Output Shape              Param #</span>
+<span class="sd">=================================================================</span>
+<span class="sd">input (InputLayer)           (None, 97)                0</span>
+<span class="sd">_________________________________________________________________</span>
+<span class="sd">layer_embedding (Embedding)  (None, 97, 100)           320600</span>
+<span class="sd">_________________________________________________________________</span>
+<span class="sd">layer_blstm (Bidirectional)  (None, 97, 256)           235520</span>
+<span class="sd">_________________________________________________________________</span>
+<span class="sd">layer_dropout (Dropout)      (None, 97, 256)           0</span>
+<span class="sd">_________________________________________________________________</span>
+<span class="sd">layer_time_distributed (Time (None, 97, 8)             2056</span>
+<span class="sd">_________________________________________________________________</span>
+<span class="sd">activation_7 (Activation)    (None, 97, 8)             0</span>
+<span class="sd">=================================================================</span>
+<span class="sd">Total params: 558,176</span>
+<span class="sd">Trainable params: 558,176</span>
+<span class="sd">Non-trainable params: 0</span>
+<span class="sd">_________________________________________________________________</span>
+<span class="sd">Train on 20864 samples, validate on 2318 samples</span>
+<span class="sd">Epoch 1/50</span>
+<span class="sd">20864/20864 [==============================] - 9s 417us/sample - loss: 0.2508 - acc: 0.9333 - val_loss: 0.1240 - val_acc: 0.9607</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+
+<h3 id="bert">使用 Bert 语言模型<a class="headerlink" href="#bert" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kashgari.embeddings</span> <span class="kn">import</span> <span class="n">BERTEmbedding</span>
+<span class="kn">from</span> <span class="nn">kashgari.tasks.labeling</span> <span class="kn">import</span> <span class="n">BiGRU_Model</span>
+<span class="kn">from</span> <span class="nn">kashgari.corpus</span> <span class="kn">import</span> <span class="n">ChineseDailyNerCorpus</span>
+
+<span class="c1"># 此处需要自行下载 BERT 权重</span>
+<span class="n">bert_embedding</span> <span class="o">=</span> <span class="n">BERTEmbedding</span><span class="p">(</span><span class="s1">&#39;&lt;bert-model-folder&gt;&#39;</span><span class="p">,</span> <span class="n">sequence_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">BiGRU_Model</span><span class="p">(</span><span class="n">bert_embedding</span><span class="p">)</span>
+
+<span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span> <span class="o">=</span> <span class="n">ChineseDailyNerCorpus</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+</pre></div>
+
+<h2 id="_6">性能指标<a class="headerlink" href="#_6" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th>语言</th>
+<th>数据集</th>
+<th>得分</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>命名实体识别</td>
+<td>中文</td>
+<td>人民日报数据集</td>
+<td><strong>94.46</strong> (F1)</td>
+<td><a href="tutorial/text-labeling/#performance-report">Text Labeling Performance Report</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">贡献<a class="headerlink" href="#_7" title="Permanent link">#</a></h2>
+<p>如果对 Kashgari 感兴趣，可以通过多种方式加入到该项目。可以通过查阅 <a href="about/contributing/">贡献指南</a> 来了解更多。</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+        
+          <a href="tutorial/text-classification/" title="文本分类" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                文本分类
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 - 2022 BrikerMan
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/BrikerMan" class="md-footer-social__link fa fa-github-alt"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/application.245445c6.js"></script>
+      
+        
+        
+          
+          <script src="assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
+      
+        <script src="static/js/baidu-static.js"></script>
+      
+    
+  </body>
+</html>
