@@ -20,7 +20,7 @@
     </a>
 </p>
 
-!!! tip
+!!! danger
     该文档只包括 Kashgari 1.x，Kashgari 2.x 请阅读 https://kashgari.readthedocs.io/en/v2.0.0/
 
 Kashgari 是一个极简且强大的 NLP 框架，可用于文本分类和标注的学习，研究及部署上线。
