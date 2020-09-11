@@ -20,6 +20,9 @@
     </a>
 </p>
 
+!!! tip
+    该文档只包括 Kashgari 1.x，Kashgari 2.x 请阅读 https://kashgari.readthedocs.io/en/v2.0.0/
+
 Kashgari 是一个极简且强大的 NLP 框架，可用于文本分类和标注的学习，研究及部署上线。
 
 - **方便易用** Kashgari 提供了简洁统一的 API 和完善的文档，使其非常方便易用。
