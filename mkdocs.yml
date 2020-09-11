@@ -8,6 +8,9 @@ theme:
     primary: red
     accent: red
   language: "zh"
+  icon:
+    logo: logo
+    repo: logo
 # Repository
 repo_name: "BrikerMan/Kashgari"
 repo_url: "https://github.com/BrikerMan/Kashgari"
@@ -61,11 +64,11 @@ google_analytics:
   - "UA-78705624-3"
   - "auto"
 
-extra:
-  social:
-    - type: github-alt
-      link: https://github.com/BrikerMan
-  disqus: "kashgari"
+# extra:
+#   social:
+#     - type: github-alt
+#       link: https://github.com/BrikerMan
+#   disqus: "kashgari"
 
 nav:
   - 介绍: index.md
